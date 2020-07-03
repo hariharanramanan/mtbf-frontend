@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-            "aot": true,
+                        "aot": true,
                         "outputPath": "dist/fuse",
                         "index": "src/index.html",
                         "main": "src/main.ts",
@@ -25,11 +25,10 @@
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "web.config"
                         ],
-                        "styles": [
-                            "src/styles.scss"
-                        ],
+                        "styles": ["src/styles.scss"],
                         "scripts": [],
                         "showCircularDependencies": false
                     },
@@ -53,32 +52,32 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "4mb",
+                                    "maximumWarning": "2mb",
                                     "maximumError": "6mb"
                                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
                             ]
                         },
                         "ec": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
                             "sourceMap": true,
                             "extractCss": true
                         },
                         "hmr": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -119,13 +118,8 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
-                        "styles": [
-                            "src/styles.scss"
-                        ],
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": ["src/styles.scss"],
                         "scripts": []
                     }
                 },
@@ -137,9 +131,7 @@
                             "tsconfig.spec.json",
                             "e2e/tsconfig.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "e2e": {
