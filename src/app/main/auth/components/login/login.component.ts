@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
-import { FuseSplashScreenService } from "@fuse/services/splash-screen.service";
+import { AuthService } from "../../../services/auth/auth.service";
 
 @Component({
     selector: "login",
@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
     constructor(
-        private _fuseSplashScreenService: FuseSplashScreenService,
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        private authService: AuthService
     ) {
         // Configure the layout
         this._fuseConfigService.config = {
@@ -42,10 +42,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this._fuseSplashScreenService.show();
-        setTimeout(() => {
-            this._fuseSplashScreenService.hide();
-        }, 100);
         this.loginForm = this._formBuilder.group({
             email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
@@ -53,7 +49,14 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        console.log(this.loginForm.value);
+        let formData = {};
+        formData = {
+            ...formData,
+            email: this.loginForm.value.email,
+            name: "Yogesh",
+            usertype: "superadmin",
+        };
+        this.authService.setUser(formData);
         this.router.navigate(["/dashboard"]);
     }
 }

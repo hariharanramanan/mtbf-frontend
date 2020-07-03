@@ -4,6 +4,7 @@ import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { fuseAnimations } from "@fuse/animations";
 
 import { AddPlantComponent } from "../add-plant/add-plant.component";
+import { AuthService } from "app/main/services/auth/auth.service";
 @Component({
     selector: "app-plant",
     templateUrl: "./plant.component.html",
@@ -11,6 +12,17 @@ import { AddPlantComponent } from "../add-plant/add-plant.component";
     animations: fuseAnimations,
 })
 export class PlantComponent implements OnInit {
+    constructor(
+        private _bottomSheet: MatBottomSheet,
+        private authService: AuthService
+    ) {}
+
+    ngOnInit(): void {
+        this.authService.getUser().subscribe((data) => {
+            console.log(data);
+        });
+    }
+
     rows = [
         {
             id: "1",
@@ -63,10 +75,6 @@ export class PlantComponent implements OnInit {
     ];
 
     ColumnMode = ColumnMode;
-
-    constructor(private _bottomSheet: MatBottomSheet) {}
-
-    ngOnInit(): void {}
 
     openBottomSheet() {
         const bottomSheetRef = this._bottomSheet.open(AddPlantComponent);
