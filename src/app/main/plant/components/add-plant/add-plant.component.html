@@ -1,0 +1,51 @@
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout="row"
+    fxLayoutAlign="center start"
+>
+    <form
+        #form="ngForm"
+        [formGroup]="addPlantForm"
+        fxFlex.gt-xs="40%"
+        fxFlex.xs="100%"
+        fxLayout="column"
+        (submit)="addPlant()"
+    >
+        <mat-form-field appearance="outline">
+            <mat-label>Plant Name</mat-label>
+            <input matInput formControlName="plantName" />
+            <!-- <mat-icon matSuffix class="secondary-text">mail</mat-icon> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Primary Contact</mat-label>
+            <input matInput formControlName="primaryContact" />
+            <!-- <mat-icon matSuffix class="secondary-text">mail</mat-icon> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" />
+            <!-- <mat-icon matSuffix class="secondary-text">mail</mat-icon> -->
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="10%">
+            <button
+                fxFlex="45%"
+                mat-raised-button
+                color="accent"
+                [disabled]="addPlantForm.invalid"
+            >
+                ADD PLANT
+            </button>
+            <button
+                (click)="cancel()"
+                fxFlex="45%"
+                mat-raised-button
+                color="secondary"
+            >
+                CANCEL
+            </button>
+        </div>
+    </form>
+</div>
