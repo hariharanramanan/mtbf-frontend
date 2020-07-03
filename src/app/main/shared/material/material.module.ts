@@ -8,7 +8,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatIconModule } from "@angular/material/icon";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatListModule } from "@angular/material/list";
-
+import { MatSelectModule } from "@angular/material/select";
 @NgModule({
     declarations: [],
     imports: [
@@ -20,6 +20,7 @@ import { MatListModule } from "@angular/material/list";
         MatInputModule,
         MatIconModule,
         MatListModule,
+        MatSelectModule,
     ],
     exports: [
         MatBottomSheetModule,
@@ -29,6 +30,7 @@ import { MatListModule } from "@angular/material/list";
         MatInputModule,
         MatIconModule,
         MatListModule,
+        MatSelectModule,
     ],
 })
 export class MaterialModule {}
