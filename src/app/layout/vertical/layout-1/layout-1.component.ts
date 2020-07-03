@@ -63,9 +63,16 @@ const sidemenu: FuseNavigation[] = [
             },
             {
                 id: "usermanagement",
-                title: "Users",
-                type: "item",
-                url: "/users",
+                title: "User Management",
+                type: "collapsable",
+                children: [
+                    {
+                        id: "usermaster",
+                        title: "Users",
+                        type: "item",
+                        url: "/users",
+                    },
+                ],
             },
         ],
     },
