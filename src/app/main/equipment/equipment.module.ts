@@ -1,18 +1,26 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Route } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { EquipmentComponent } from "./components/equipment/equipment.component";
+import { SharedModule } from "../shared/shared.module";
+
+import * as fromComponents from "./components";
 
 const routes: Route[] = [
     {
         path: "**",
-        component: EquipmentComponent,
+        component: fromComponents.EquipmentComponent,
     },
 ];
 
 @NgModule({
-    declarations: [EquipmentComponent],
-    imports: [CommonModule, RouterModule.forChild(routes)],
+    declarations: [...fromComponents.components],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        SharedModule,
+        RouterModule.forChild(routes),
+    ],
 })
 export class EquipmentModule {}
