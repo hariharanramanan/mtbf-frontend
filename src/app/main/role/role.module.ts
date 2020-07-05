@@ -10,7 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 const routes: Route[] = [
     {
         path: "**",
-        component: fromComponents.UsersComponent,
+        component: fromComponents.RoleComponent,
     },
 ];
 
@@ -23,4 +23,4 @@ const routes: Route[] = [
         SharedModule,
     ],
 })
-export class UsersModule {}
+export class RoleModule {}

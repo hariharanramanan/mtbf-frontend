@@ -93,6 +93,11 @@ const appRoutes: Routes = [
             import("./main/users/users.module").then((m) => m.UsersModule),
     },
     {
+        path: "role",
+        loadChildren: () =>
+            import("./main/role/role.module").then((m) => m.RoleModule),
+    },
+    {
         path: "**",
         redirectTo: "auth/login",
     },

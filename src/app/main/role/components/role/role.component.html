@@ -5,8 +5,8 @@
         fxLayout="row"
         fxLayoutAlign="space-between center"
     >
-        <h2>User Lists</h2>
-        <button mat-raised-button (click)="openBottomSheet()">Add User</button>
+        <h2>Role Lists</h2>
+        <button mat-raised-button (click)="openBottomSheet()">Add Role</button>
     </div>
     <!-- / HEADER -->
 
@@ -22,14 +22,14 @@
             [limit]="4"
         >
             <ngx-datatable-column
-                name="Username"
-                prop="username"
+                name="Role Name"
+                prop="roleName"
                 [flexGrow]="1"
             ></ngx-datatable-column>
 
             <ngx-datatable-column
-                name="Role"
-                prop="role"
+                name="Permissions"
+                prop="permissions"
                 [flexGrow]="1"
             ></ngx-datatable-column>
 
