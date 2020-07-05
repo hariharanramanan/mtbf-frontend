@@ -77,9 +77,16 @@ const sidemenu: FuseNavigation[] = [
                 children: [
                     {
                         id: "usermaster",
-                        title: "Users",
+                        title: "User Master",
                         type: "item",
                         url: "/users",
+                        icon: "navigate_next",
+                    },
+                    {
+                        id: "rolemaster",
+                        title: "Role Master",
+                        type: "item",
+                        url: "/role",
                         icon: "navigate_next",
                     },
                 ],
@@ -134,15 +141,7 @@ export class VerticalLayout1Component implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void {
-        // Subscribe to config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
@@ -150,11 +149,7 @@ export class VerticalLayout1Component implements OnInit, OnDestroy {
             });
     }
 
-    /**
-     * On destroy
-     */
     ngOnDestroy(): void {
-        // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
