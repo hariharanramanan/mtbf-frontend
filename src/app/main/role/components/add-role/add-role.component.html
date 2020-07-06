@@ -1,1 +1,53 @@
-<p>add-role works!</p>
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout="row"
+    fxLayoutAlign="center start"
+>
+    <form
+        #form="ngForm"
+        [formGroup]="addRoleForm"
+        fxFlex.gt-xs="40%"
+        fxFlex.xs="100%"
+        fxLayout="column"
+        (submit)="addRole()"
+    >
+        <mat-form-field appearance="outline">
+            <mat-label>Role Name</mat-label>
+            <input matInput formControlName="roleName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Permissions</mat-label>
+            <mat-select
+                formControlName="permissions"
+                name="permission"
+                multiple
+            >
+                <mat-option
+                    *ngFor="let permission of permissions"
+                    [value]="permission.value"
+                >
+                    {{ permission.value }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="10%">
+            <button
+                fxFlex="45%"
+                mat-raised-button
+                color="accent"
+                [disabled]="addRoleForm.invalid"
+            >
+                ADD ROLE
+            </button>
+            <button
+                (click)="cancel()"
+                fxFlex="45%"
+                mat-raised-button
+                color="secondary"
+            >
+                CANCEL
+            </button>
+        </div>
+    </form>
+</div>
