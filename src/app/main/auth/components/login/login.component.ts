@@ -49,14 +49,9 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        let formData = {};
-        formData = {
-            ...formData,
-            email: this.loginForm.value.email,
-            name: "Yogesh",
-            usertype: "superadmin",
-        };
-        this.authService.setUser(formData);
-        this.router.navigate(["/dashboard"]);
+        this.authService.login(this.loginForm.value).subscribe((data) => {
+            console.log(data);
+            this.router.navigate(["/dashboard"]);
+        });
     }
 }
