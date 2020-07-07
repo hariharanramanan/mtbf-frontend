@@ -5,6 +5,7 @@ import { Subject } from "rxjs";
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
+import { RegisterService } from "../../../services";
 
 @Component({
     selector: "register",
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        private registerService: RegisterService
     ) {
         // Configure the layout
         this._fuseConfigService.config = {
@@ -50,7 +52,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerForm = this._formBuilder.group({
             companyName: ["", Validators.required],
             website: ["", Validators.required],
-            contactPersonName: ["", Validators.required],
+            contactName: ["", Validators.required],
             phone: ["", Validators.required],
             email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
@@ -60,8 +62,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     register() {
-        console.log(this.registerForm.value);
-        this.router.navigate(["/auth/login"]);
+        this.registerService
+            .register(this.registerForm.value)
+            .subscribe((data) => {
+                console.log(data);
+                this.router.navigate(["/auth/login"]);
+            });
     }
     ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
