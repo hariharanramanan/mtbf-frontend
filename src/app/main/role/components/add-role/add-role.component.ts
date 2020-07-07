@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatBottomSheetRef } from "@angular/material/bottom-sheet";
 
+import { MasterService, RoleService } from "../../../services";
+
 @Component({
     selector: "app-add-role",
     templateUrl: "./add-role.component.html",
@@ -13,11 +15,16 @@ export class AddRoleComponent implements OnInit {
 
     constructor(
         private _bottomSheetRef: MatBottomSheetRef<AddRoleComponent>,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private masterService: MasterService,
+        private roleService: RoleService
     ) {}
 
     ngOnInit() {
         this.createForm();
+        this.masterService.getAllMasters().subscribe((data: any) => {
+            this.permissions = data.masters;
+        });
     }
 
     permissions: any[] = [
@@ -28,8 +35,8 @@ export class AddRoleComponent implements OnInit {
 
     createForm() {
         this.addRoleForm = this.formBuilder.group({
-            roleName: ["", Validators.required],
-            permissions: ["", Validators.required],
+            role: ["", Validators.required],
+            masters: ["", Validators.required],
         });
     }
 
@@ -39,7 +46,12 @@ export class AddRoleComponent implements OnInit {
     }
 
     addRole(): void {
+        if (this.addRoleForm.valid) {
+            this.roleService
+                .addRole(this.addRoleForm.value)
+                .subscribe((data) => console.log(data));
+        }
         this.form.resetForm();
-        this._bottomSheetRef.dismiss({ test: "wow" });
+        this._bottomSheetRef.dismiss();
     }
 }

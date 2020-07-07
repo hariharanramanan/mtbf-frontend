@@ -13,20 +13,16 @@
     >
         <mat-form-field appearance="outline">
             <mat-label>Role Name</mat-label>
-            <input matInput formControlName="roleName" />
+            <input matInput formControlName="role" />
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Permissions</mat-label>
-            <mat-select
-                formControlName="permissions"
-                name="permission"
-                multiple
-            >
+            <mat-select formControlName="masters" name="permission" multiple>
                 <mat-option
                     *ngFor="let permission of permissions"
-                    [value]="permission.value"
+                    [value]="permission._id"
                 >
-                    {{ permission.value }}
+                    {{ permission.mastername }}
                 </mat-option>
             </mat-select>
         </mat-form-field>

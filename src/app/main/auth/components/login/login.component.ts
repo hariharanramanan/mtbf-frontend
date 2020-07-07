@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
-import { AuthService } from "../../../services/auth/auth.service";
+import { AuthService } from "../../../services/";
 
 @Component({
     selector: "login",

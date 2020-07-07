@@ -3,6 +3,8 @@ import { ColumnMode } from "@swimlane/ngx-datatable";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 
 import { AddRoleComponent } from "../add-role/add-role.component";
+import { RoleService } from "../../../services";
+import { IRoles, IRole } from "../../../models";
 
 @Component({
     selector: "app-role",
@@ -10,34 +12,53 @@ import { AddRoleComponent } from "../add-role/add-role.component";
     styleUrls: ["./role.component.scss"],
 })
 export class RoleComponent implements OnInit {
-    constructor(private _bottomSheet: MatBottomSheet) {}
-
-    ngOnInit(): void {}
-
-    rows = [
-        {
-            roleName: "Role 1",
-            permissions: ["Shopfloor Master", "Line Master"],
-        },
-        {
-            roleName: "Role 2",
-            permissions: ["Equipment Master", "Spare Master"],
-        },
-    ];
-
+    rows: any[] = [];
     ColumnMode = ColumnMode;
+
+    constructor(
+        private _bottomSheet: MatBottomSheet,
+        private roleService: RoleService
+    ) {}
+
+    ngOnInit(): void {
+        this.roleService.getRoles().subscribe((data: IRoles) => {
+            this.rows = data.roles.map((item) => {
+                return {
+                    role: item.role,
+                    masters: item.masters.map((item) => item.mastername),
+                };
+            });
+        });
+
+        const response = {
+            roles: [
+                {
+                    masters: [
+                        {
+                            _id: "",
+                            mastername: "plant",
+                        },
+                        {
+                            _id: "",
+                            mastername: "line",
+                        },
+                    ],
+                    role: "Vice President",
+                    _id: "5defgg....tt",
+                },
+            ],
+        };
+        const sampleRole = [
+            {
+                role: "Supervisor",
+                masters: ["plant", "equipment"],
+            },
+        ];
+    }
 
     openBottomSheet() {
         const bottomSheetRef = this._bottomSheet.open(AddRoleComponent);
 
-        bottomSheetRef.afterDismissed().subscribe((dataFromChild) => {
-            this.rows = [
-                ...this.rows,
-                {
-                    roleName: "Role 3",
-                    permissions: ["Shift Master", "UoM Master"],
-                },
-            ];
-        });
+        bottomSheetRef.afterDismissed().subscribe((dataFromChild) => {});
     }
 }
