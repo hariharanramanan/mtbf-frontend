@@ -1,1 +1,52 @@
-<p>add-user works!</p>
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout="row"
+    fxLayoutAlign="center start"
+>
+    <form
+        #form="ngForm"
+        [formGroup]="addUserForm"
+        fxFlex.gt-xs="40%"
+        fxFlex.xs="100%"
+        fxLayout="column"
+        (submit)="addUser()"
+    >
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Select Role</mat-label>
+            <mat-select formControlName="role" name="plant">
+                <mat-option *ngFor="let role of roles" [value]="role._id">
+                    {{ role.role }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="10%">
+            <button
+                fxFlex="45%"
+                mat-raised-button
+                color="accent"
+                [disabled]="addUserForm.invalid"
+            >
+                ADD USER
+            </button>
+            <button
+                (click)="cancel()"
+                fxFlex="45%"
+                mat-raised-button
+                color="secondary"
+            >
+                CANCEL
+            </button>
+        </div>
+    </form>
+</div>
