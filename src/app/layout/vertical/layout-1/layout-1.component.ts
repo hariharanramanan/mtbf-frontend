@@ -76,6 +76,13 @@ const sidemenu: FuseNavigation[] = [
                 icon: "perm_identity",
                 children: [
                     {
+                        id: "approvals",
+                        title: "Pending Approvals",
+                        type: "item",
+                        url: "/approval",
+                        icon: "navigate_next",
+                    },
+                    {
                         id: "usermaster",
                         title: "User Master",
                         type: "item",

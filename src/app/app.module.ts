@@ -98,6 +98,13 @@ const appRoutes: Routes = [
             import("./main/role/role.module").then((m) => m.RoleModule),
     },
     {
+        path: "approval",
+        loadChildren: () =>
+            import("./main/approval/approval.module").then(
+                (m) => m.ApprovalModule
+            ),
+    },
+    {
         path: "**",
         redirectTo: "auth/login",
     },
