@@ -30,7 +30,7 @@ export const fuseConfig: FuseConfig = {
             position: "above",
         },
         footer: {
-            customBackgroundColor: true,
+            customBackgroundColor: false,
             background: "fuse-navy-900",
             hidden: false,
             position: "above",

@@ -24,14 +24,6 @@
         <!-- / NAVBAR: Left -->
 
         <div id="container-2" class="container">
-            <!-- TOOLBAR: Below fixed -->
-            <ng-container
-                *ngIf="fuseConfig.layout.toolbar.position === 'below-fixed'"
-            >
-                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
-            </ng-container>
-            <!-- / TOOLBAR: Below fixed -->
-
             <div
                 id="container-3"
                 class="container"
@@ -41,66 +33,13 @@
                     updateOnRouteChange: true
                 }"
             >
-                <!-- TOOLBAR: Below static -->
-                <ng-container
-                    *ngIf="
-                        fuseConfig.layout.toolbar.position === 'below-static'
-                    "
-                >
-                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
-                </ng-container>
-                <!-- / TOOLBAR: Below static -->
-
                 <!-- CONTENT -->
                 <content></content>
                 <!-- / CONTENT -->
-
-                <!-- FOOTER: Below static -->
-                <ng-container
-                    *ngIf="fuseConfig.layout.footer.position === 'below-static'"
-                >
-                    <ng-container *ngTemplateOutlet="footer"></ng-container>
-                </ng-container>
-                <!-- / FOOTER: Below static -->
             </div>
-
-            <!-- FOOTER: Below fixed -->
-            <ng-container
-                *ngIf="fuseConfig.layout.footer.position === 'below-fixed'"
-            >
-                <ng-container *ngTemplateOutlet="footer"></ng-container>
-            </ng-container>
-            <!-- / FOOTER: Below fixed -->
         </div>
     </div>
-
-    <!-- FOOTER: Above -->
-    <ng-container *ngIf="fuseConfig.layout.footer.position === 'above'">
-        <ng-container *ngTemplateOutlet="footer"></ng-container>
-    </ng-container>
-    <!-- FOOTER: Above -->
 </div>
-
-<!-- SIDE PANEL -->
-<ng-container
-    *ngIf="
-        !fuseConfig.layout.sidepanel.hidden &&
-        fuseConfig.layout.sidepanel.position === 'right'
-    "
->
-    <!-- PANEL CONTENT -->
-</ng-container>
-<!-- / SIDE PANEL -->
-
-<!-- QUICK PANEL -->
-<fuse-sidebar name="quickPanel" position="right" class="quick-panel">
-    <quick-panel></quick-panel>
-</fuse-sidebar>
-<!-- / QUICK PANEL -->
-
-<!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- @ PARTIALS                                                                                            -->
-<!-- ----------------------------------------------------------------------------------------------------- -->
 
 <!-- TOOLBAR -->
 <ng-template #toolbar>
@@ -117,21 +56,6 @@
     </toolbar>
 </ng-template>
 <!-- / TOOLBAR -->
-
-<!-- FOOTER -->
-<ng-template #footer>
-    <footer
-        *ngIf="!fuseConfig.layout.footer.hidden"
-        [ngClass]="
-            fuseConfig.layout.footer.customBackgroundColor === true
-                ? fuseConfig.layout.footer.position +
-                  ' ' +
-                  fuseConfig.layout.footer.background
-                : fuseConfig.layout.footer.position
-        "
-    ></footer>
-</ng-template>
-<!-- / FOOTER -->
 
 <!-- LEFT NAVBAR -->
 <ng-template #leftNavbar>
