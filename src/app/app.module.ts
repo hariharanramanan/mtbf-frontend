@@ -21,7 +21,8 @@ import { fuseConfig } from "app/fuse-config";
 
 import { AppComponent } from "app/app.component";
 import { LayoutModule } from "app/layout/layout.module";
-
+import { AuthGuard } from "./main/services";
+import { AuthModule } from "./main/auth/auth.module";
 const appRoutes: Routes = [
     {
         path: "auth",
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
             import("./main/dashboard/dashboard.module").then(
                 (m) => m.DashboardModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "settings",
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
             import("./main/settings/settings.module").then(
                 (m) => m.SettingsModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "factory",
@@ -48,11 +51,13 @@ const appRoutes: Routes = [
             import("./main/factory/factory.module").then(
                 (m) => m.FactoryModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "plant",
         loadChildren: () =>
             import("./main/plant/plant.module").then((m) => m.PlantModule),
+        canLoad: [AuthGuard],
     },
     {
         path: "shopfloor",
@@ -60,11 +65,13 @@ const appRoutes: Routes = [
             import("./main/shopfloor/shopfloor.module").then(
                 (m) => m.ShopfloorModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "line",
         loadChildren: () =>
             import("./main/line/line.module").then((m) => m.LineModule),
+        canLoad: [AuthGuard],
     },
     {
         path: "equipment",
@@ -72,6 +79,7 @@ const appRoutes: Routes = [
             import("./main/equipment/equipment.module").then(
                 (m) => m.EquipmentModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "routine",
@@ -79,6 +87,7 @@ const appRoutes: Routes = [
             import("./main/routine/routine.module").then(
                 (m) => m.RoutineModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "machine",
@@ -86,16 +95,19 @@ const appRoutes: Routes = [
             import("./main/machine/machine.module").then(
                 (m) => m.MachineModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "users",
         loadChildren: () =>
             import("./main/users/users.module").then((m) => m.UsersModule),
+        canLoad: [AuthGuard],
     },
     {
         path: "role",
         loadChildren: () =>
             import("./main/role/role.module").then((m) => m.RoleModule),
+        canLoad: [AuthGuard],
     },
     {
         path: "approval",
@@ -103,6 +115,7 @@ const appRoutes: Routes = [
             import("./main/approval/approval.module").then(
                 (m) => m.ApprovalModule
             ),
+        canLoad: [AuthGuard],
     },
     {
         path: "**",
@@ -136,6 +149,7 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
+        AuthModule,
     ],
     bootstrap: [AppComponent],
 })
