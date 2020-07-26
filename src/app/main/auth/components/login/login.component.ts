@@ -49,10 +49,6 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.authService.login(this.loginForm.value).subscribe((data: any) => {
-            this.authService.setTokenToStorage(data.token);
-            this.authService.setUser(this.authService.decodeJwt());
-            this.router.navigate(["/dashboard"]);
-        });
+        this.router.navigate(["/dashboard"]);
     }
 }

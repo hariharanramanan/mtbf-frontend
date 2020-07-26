@@ -68,7 +68,7 @@ $typography: mat-typography-config(
     $body-2: mat-typography-level(14px, 24px, 600),
     $button: mat-typography-level(14px, 14px, 600),
     $input: mat-typography-level(16px, 1.125, 400)
-        // line-height must be unitless !!!,,,,,,,,
+        // line-height must be unitless !!!,,,,,,,,,
 );
 
 // Setup the typography
@@ -82,7 +82,6 @@ $typography: mat-typography-config(
 @import "src/app/layout/components/chat-panel/chat-panel.theme";
 @import "src/app/layout/components/toolbar/toolbar.theme";
 @import "src/app/main/auth/components/login/login.theme";
-@import "src/app/main/auth/components/register/register.theme";
 @import "src/app/main/auth/components/forgot-password/forgot-password.theme";
 
 // Define a mixin for easier access
@@ -93,7 +92,6 @@ $typography: mat-typography-config(
 
     // Pages
     @include login-theme($theme);
-    @include register-theme($theme);
     @include forgot-password-theme($theme);
 }
 
