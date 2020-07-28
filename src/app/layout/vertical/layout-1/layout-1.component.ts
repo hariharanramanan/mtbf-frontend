@@ -107,6 +107,13 @@ export class VerticalLayout1Component implements OnInit, OnDestroy {
                 type: "group",
                 children: [
                     {
+                        id: "factoryMaster",
+                        title: "Factory Master",
+                        type: "item",
+                        url: "/factory-master",
+                        icon: "keyboard_arrow_right",
+                    },
+                    {
                         id: "plantMaster",
                         title: "Plant Master",
                         type: "item",
