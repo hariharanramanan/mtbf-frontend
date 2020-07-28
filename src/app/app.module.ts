@@ -37,6 +37,13 @@ const appRoutes: Routes = [
             ),
     },
     {
+        path: "settings",
+        loadChildren: () =>
+            import("./main/settings/settings.module").then(
+                (m) => m.SettingsModule
+            ),
+    },
+    {
         path: "**",
         redirectTo: "auth/login",
     },
