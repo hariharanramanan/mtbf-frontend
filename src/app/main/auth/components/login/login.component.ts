@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Apollo } from 'apollo-angular';
+import { map } from 'rxjs/operators';
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
 import { AuthService } from "../../../services/";
+import { LOGIN } from '../../../queries';
 
 @Component({
     selector: "login",
@@ -20,8 +23,12 @@ export class LoginComponent implements OnInit {
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
         private router: Router,
+        private apollo: Apollo,
         private authService: AuthService
     ) {
+        if(this.authService.isLoggedIn()) {
+            this.router.navigate(['/dashboard']);
+        }
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
@@ -49,6 +56,23 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.router.navigate(["/dashboard"]);
+        const { email, password } = this.loginForm.value;
+
+        this.apollo
+            .watchQuery({
+                query: LOGIN,
+                variables: { email, password}
+            })
+            .valueChanges.pipe(
+                map(( { data: { login }}: any ) => {
+                    console.log('Inside pipe', login);
+                    localStorage.setItem('token', JSON.stringify(login));
+                    return login;
+                })
+            )
+            .subscribe(data => {
+                console.log('Inside subscribe', data);
+                this.router.navigate(['/dashboard']);
+            });
     }
 }

@@ -22,7 +22,6 @@ import { fuseConfig } from "app/fuse-config";
 import { AppComponent } from "app/app.component";
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from "app/layout/layout.module";
-import { AuthGuard } from "./main/services";
 import { AuthModule } from "./main/auth/auth.module";
 import { GraphQLModule } from "./graphql.module";
 

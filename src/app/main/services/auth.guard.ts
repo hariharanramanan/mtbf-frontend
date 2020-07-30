@@ -1,35 +1,22 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Router, Route, CanLoad } from "@angular/router";
-import { AuthService } from "./auth.service";
-import { BehaviorSubject } from "rxjs";
-import * as jwtDecode from "jwt-decode";
-
-const tokenKey = "token";
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
-    private userData = new BehaviorSubject<any>({});
+export class AuthGuard implements CanActivate {
+    constructor(
+        private router: Router,
+        private authService: AuthService
+    ) { }
 
-    constructor(private router: Router, private authService: AuthService) {}
-
-    canLoad(route: Route): boolean {
-        console.log(route.path);
-        let canAccess: boolean;
-        let url = route.path;
-        this.authService.getUserData().subscribe((data) => {
-            if (data && data.masters) {
-                const masters = data.masters.map((item) => item.mastername);
-                if (masters.indexOf(url) !== -1) {
-                    canAccess = true;
-                    return;
-                }
-            }
-            canAccess = false;
-            this.router.navigate(["/auth/login"]);
-        });
-        return canAccess;
+    canActivate(route: ActivatedRouteSnapshot) {
+        console.log(route.url);
+        if(this.authService.isLoggedIn()) {
+            return true;
+        }
+        this.router.navigate(['/dashboard']);
+        return false;
     }
 }
