@@ -20,36 +20,11 @@ import {
 import { fuseConfig } from "app/fuse-config";
 
 import { AppComponent } from "app/app.component";
+import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from "app/layout/layout.module";
 import { AuthGuard } from "./main/services";
 import { AuthModule } from "./main/auth/auth.module";
 import { GraphQLModule } from "./graphql.module";
-
-const appRoutes: Routes = [
-    {
-        path: "auth",
-        loadChildren: () =>
-            import("./main/auth/auth.module").then((m) => m.AuthModule),
-    },
-    {
-        path: "dashboard",
-        loadChildren: () =>
-            import("./main/dashboard/dashboard.module").then(
-                (m) => m.DashboardModule
-            ),
-    },
-    {
-        path: "settings",
-        loadChildren: () =>
-            import("./main/settings/settings.module").then(
-                (m) => m.SettingsModule
-            ),
-    },
-    {
-        path: "**",
-        redirectTo: "auth/login",
-    },
-];
 
 @NgModule({
     declarations: [AppComponent],
@@ -57,7 +32,7 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes),
+        AppRoutingModule,
 
         TranslateModule.forRoot(),
 
