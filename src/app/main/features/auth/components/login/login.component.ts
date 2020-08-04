@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
-import { AuthService } from "../../../services/";
-import { LOGIN } from '../../../queries';
+import { AuthService } from "../../../../services";
+import { LOGIN } from '../../../../queries';
 
 @Component({
     selector: "login",

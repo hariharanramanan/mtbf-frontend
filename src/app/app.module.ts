@@ -21,7 +21,7 @@ import { fuseConfig } from "app/fuse-config";
 import { AppComponent } from "app/app.component";
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from "app/layout/layout.module";
-import { AuthModule } from "./main/auth/auth.module";
+import { AuthModule } from "./main/features/auth/auth.module";
 import { GraphQLModule } from "./graphql.module";
 import { ErrorInterceptor } from './error/error-interceptor';
 import { SharedModule } from './main/shared/shared.module';

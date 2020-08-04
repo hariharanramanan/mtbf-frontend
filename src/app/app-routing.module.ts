@@ -12,12 +12,12 @@ const appRoutes: Routes = [
     {
         path: "auth",
         loadChildren: () =>
-            import("./main/auth/auth.module").then((m) => m.AuthModule),
+            import("./main/features/auth/auth.module").then((m) => m.AuthModule),
     },
     {
         path: "dashboard",
         loadChildren: () =>
-            import("./main/dashboard/dashboard.module").then(
+            import("./main/features/dashboard/dashboard.module").then(
                 (m) => m.DashboardModule
             )
     },
