@@ -5,9 +5,10 @@ import { FuseSharedModule } from "@fuse/shared.module";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 import { MaterialModule } from "./material/material.module";
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [ErrorComponent],
     imports: [
         CommonModule,
         MaterialModule,
@@ -15,5 +16,6 @@ import { MaterialModule } from "./material/material.module";
         NgxDatatableModule,
     ],
     exports: [MaterialModule, FuseSharedModule, NgxDatatableModule],
+    entryComponents: [ErrorComponent]
 })
 export class SharedModule {}

@@ -10,6 +10,7 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
     declarations: [],
     imports: [
@@ -23,6 +24,7 @@ import { MatTabsModule } from "@angular/material/tabs";
         MatListModule,
         MatSelectModule,
         MatTabsModule,
+        MatDialogModule
     ],
     exports: [
         MatBottomSheetModule,
@@ -34,6 +36,7 @@ import { MatTabsModule } from "@angular/material/tabs";
         MatListModule,
         MatSelectModule,
         MatTabsModule,
+        MatDialogModule
     ],
 })
 export class MaterialModule {}

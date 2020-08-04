@@ -1,8 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterModule, Routes } from "@angular/router";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -24,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from "app/layout/layout.module";
 import { AuthModule } from "./main/auth/auth.module";
 import { GraphQLModule } from "./graphql.module";
-
+import { ErrorInterceptor } from './error/error-interceptor';
+import { SharedModule } from './main/shared/shared.module';
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -55,7 +55,16 @@ import { GraphQLModule } from "./graphql.module";
 
         // GraphQL module
         GraphQLModule,
+
+        SharedModule
     ],
     bootstrap: [AppComponent],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+          }
+    ]
 })
 export class AppModule {}

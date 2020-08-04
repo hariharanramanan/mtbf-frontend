@@ -73,6 +73,6 @@ export class LoginComponent implements OnInit {
             .subscribe(data => {
                 console.log('Inside subscribe', data);
                 this.router.navigate(['/dashboard']);
-            });
+            },);
     }
 }
