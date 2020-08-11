@@ -83,6 +83,7 @@ $typography: mat-typography-config(
 @import "src/app/layout/components/toolbar/toolbar.theme";
 @import "src/app/main/features/auth/components/login/login.theme";
 @import "src/app/main/features/auth/components/forgot-password/forgot-password.theme";
+@import "src/app/main/shared/components/not-found/not-found.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -93,6 +94,7 @@ $typography: mat-typography-config(
     // Pages
     @include login-theme($theme);
     @include forgot-password-theme($theme);
+    @include not-found-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

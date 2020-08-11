@@ -17,6 +17,10 @@ const routes: Route[] = [
         path: "forgot-password",
         component: ForgotPasswordComponent,
     },
+    {
+        path: "**",
+        component: LoginComponent,
+    },
 ];
 
 @NgModule({

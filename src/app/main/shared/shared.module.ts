@@ -6,9 +6,10 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 import { MaterialModule } from "./material/material.module";
 import { ErrorComponent } from './components/error/error.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-    declarations: [ErrorComponent],
+    declarations: [ErrorComponent, NotFoundComponent],
     imports: [
         CommonModule,
         MaterialModule,

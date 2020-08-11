@@ -16,7 +16,9 @@ export class AuthService {
     getToken() {
         const token = localStorage.getItem('token');
         if(token) {
-            return JSON.parse(token);
+            return true;
+        } else {
+            return false;
         }
     }
 }
