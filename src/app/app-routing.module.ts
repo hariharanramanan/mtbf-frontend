@@ -21,16 +21,14 @@ const appRoutes: Routes = [
         loadChildren: () =>
             import("./main/features/dashboard/dashboard.module").then(
                 (m) => m.DashboardModule
-            ),
-        canActivate: [AuthGuard]
+            )
     },
     {
         path: "settings",
         loadChildren: () =>
             import("./main/settings/settings.module").then(
                 (m) => m.SettingsModule
-            ),
-        canActivate: [AuthGuard]
+            )
     },
     {
         path: "effisense",

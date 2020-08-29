@@ -1,1 +1,36 @@
-<p>department-master works!</p>
+<div class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Department Master</h2>
+        <button mat-raised-button (click)="addNewDepartment()">Add New Department</button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [limit]="10">
+
+            <ngx-datatable-column name="Name" prop="sno"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Department Name" prop="department"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+            
+            <ngx-datatable-column name="Is Admin / Factory?" prop="isAdminFactory"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Stauts" prop="status"></ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+    <!-- / CONTENT -->
+
+</div>

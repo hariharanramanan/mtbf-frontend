@@ -1,1 +1,34 @@
-<p>uom-master works!</p>
+<div class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Unit Master</h2>
+        <button mat-raised-button (click)="addNewUoM()">Add New Unit</button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [limit]="10">
+
+            <ngx-datatable-column name="S.No" prop="sno"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Unit Name" prop="unitName"></ngx-datatable-column>
+            
+            <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Status" prop="status"></ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+    <!-- / CONTENT -->
+
+</div>

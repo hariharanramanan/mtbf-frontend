@@ -56,7 +56,9 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        const { email, password } = this.loginForm.value;
+        this.router.navigate(['/dashboard']);
+
+        /* const { email, password } = this.loginForm.value;
 
         this.apollo
             .watchQuery({
@@ -73,6 +75,6 @@ export class LoginComponent implements OnInit {
             .subscribe(data => {
                 console.log('Inside subscribe', data);
                 this.router.navigate(['/dashboard']);
-            },);
+            },); */
     }
 }

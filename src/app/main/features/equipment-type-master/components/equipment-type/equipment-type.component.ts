@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { AddNewEquipmentTypeComponent } from '../add-new-equipment-type/add-new-equipment-type.component';
 
 @Component({
   selector: 'app-equipment-type',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipmentTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _bottomSheet: MatBottomSheet) { }
+
+  rows: any[] = [
+    {
+      sno: '1',
+      equipmentType: 'Department 1',
+      industry: 'Description 1',
+      description: 'Admin',
+      status: 'Active'
+    }
+  ];
 
   ngOnInit(): void {
+  }
+
+  addNewEquipmentType() {
+    this._bottomSheet.open(AddNewEquipmentTypeComponent);
   }
 
 }

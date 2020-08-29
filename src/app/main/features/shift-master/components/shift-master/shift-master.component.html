@@ -1,1 +1,42 @@
-<p>shift-master works!</p>
+<div class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Shift Master</h2>
+        <button mat-raised-button (click)="addNewShift()">Add New Shift</button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [limit]="10">
+
+            <ngx-datatable-column name="Name" prop="sno"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Shift Name" prop="shiftName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Shift Start Time" prop="shiftStartTime"></ngx-datatable-column>
+            
+            <ngx-datatable-column name="Shift End Time" prop="shiftEndTime"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Break Name" prop="breakName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Break Start Time" prop="breakStartTime"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Break End Time" prop="breakEndTime"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Status" prop="status"></ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+    <!-- / CONTENT -->
+
+</div>
