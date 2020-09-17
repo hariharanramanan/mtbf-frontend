@@ -1,1 +1,30 @@
-<p>add-new-equipment-type works!</p>
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout="row"
+    fxLayoutAlign.gt-sm="center start"
+>
+    <form
+        fxLayout="column"
+        fxFlex.lt-md="100%"
+        fxFlex.gt-sm="500px"
+    >
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Equipment Type</mat-label>
+            <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Select Industry</mat-label>
+            <mat-select name="plant">
+                <mat-option [value]="'id-1'">Industry 1</mat-option>
+                <mat-option [value]="'id-1'">Industry 2</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Description</mat-label>
+            <input matInput />
+        </mat-form-field>
+
+    </form>
+</div>

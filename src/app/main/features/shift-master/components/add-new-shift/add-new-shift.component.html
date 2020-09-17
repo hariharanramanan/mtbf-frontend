@@ -1,3 +1,82 @@
-<mat-nav-list>
-    <h1>Add New Shift</h1>
-</mat-nav-list>
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout.lt-md="row"
+    fxLayout.gt-sm="column"
+>
+    <form
+        fxFlex.lt-md="100%"
+        fxLayout.lt-md="column"
+        fxFlex.gt-sm="500px"
+        fxLayout.gt-sm="column wrap"
+    >
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Plant Name</mat-label>
+            <mat-select name="plant">
+                <mat-option [value]="'id-1'">SF</mat-option>
+                <mat-option [value]="'id-1'">LC</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Shift Name</mat-label>
+            <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Time Format</mat-label>
+            <mat-select name="plant">
+                <mat-option [value]="'id-1'">12 Hours</mat-option>
+                <mat-option [value]="'id-1'">24 Hours</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Shift Start Time</mat-label>
+            <input matInput type="time"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Shift End Time</mat-label>
+            <input matInput type="time"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Break Name</mat-label>
+            <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Break Start Time</mat-label>
+            <input matInput type="time"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Break End Time</mat-label>
+            <input matInput type="time"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Description</mat-label>
+            <input matInput />
+        </mat-form-field>
+
+        <!-- <div 
+            fxLayout="row" 
+            fxLayoutGap="10%">
+            <button
+                fxFlex="45%"
+                mat-raised-button
+                color="accent"
+            >
+                ADD SHIFT
+            </button>
+            <button
+                fxFlex="45%"
+                mat-raised-button
+                color="secondary"
+            >
+                CANCEL
+            </button>
+        </div> -->
+    </form>
+</div>
