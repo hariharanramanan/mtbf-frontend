@@ -11,7 +11,7 @@
     <div class="content p-24">
         <ngx-datatable
             class="material"
-            [rows]="rows"
+            [rows]="shiftMasterList"
             [columnMode]="'force'"
             [headerHeight]="48"
             [footerHeight]="56"
@@ -19,7 +19,7 @@
             [scrollbarH]="true"
             [limit]="10">
 
-            <ngx-datatable-column name="Name" prop="sno"></ngx-datatable-column>
+            <ngx-datatable-column name="Name" prop="id"></ngx-datatable-column>
 
             <ngx-datatable-column name="Shift Name" prop="shiftName"></ngx-datatable-column>
 

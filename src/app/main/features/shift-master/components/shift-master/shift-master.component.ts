@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AddNewShiftComponent } from '../add-new-shift/add-new-shift.component';
+
+import { API, graphqlOperation } from 'aws-amplify';
+import { listShiftMasters } from '../../../../../../graphql/queries';
+import { onCreateShiftMaster } from '../../../../../../graphql/subscriptions';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-shift-master',
   templateUrl: './shift-master.component.html',
@@ -8,6 +14,9 @@ import { AddNewShiftComponent } from '../add-new-shift/add-new-shift.component';
 })
 export class ShiftMasterComponent implements OnInit {
   
+  shiftMasterList: any;
+  createShiftMasterListener: any;
+
   constructor(private _bottomSheet: MatBottomSheet) { }
 
   rows: any[] = [
@@ -23,7 +32,21 @@ export class ShiftMasterComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getShiftMasters();
+    this.createShiftMasterListener = API.graphql(graphqlOperation(onCreateShiftMaster));
+    this.createShiftMasterListener.subscribe(data => {
+      // console.log(data.value.data.onCreateShiftMaster);
+      const newShiftMaster = data.value.data.onCreateShiftMaster;
+      const prevShiftMasters = this.shiftMasterList.filter(master => master.id !== newShiftMaster.id);
+      const updatedShiftMasters = [newShiftMaster, ...prevShiftMasters];
+      this.shiftMasterList = updatedShiftMasters;
+    });
+  }
+
+  async getShiftMasters() {
+    const result:any = await API.graphql(graphqlOperation(listShiftMasters));
+    this.shiftMasterList = result.data.listShiftMasters.items;
   }
 
   addNewShift() {

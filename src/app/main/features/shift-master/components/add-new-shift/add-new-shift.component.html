@@ -8,6 +8,8 @@
         fxLayout.lt-md="column"
         fxFlex.gt-sm="500px"
         fxLayout.gt-sm="column wrap"
+        [formGroup]="addShiftForm"
+        (ngSubmit)="addNewShift()"
     >
         <mat-form-field appearance="outline" class="m-8">
             <mat-label>Plant Name</mat-label>
@@ -60,13 +62,14 @@
             <input matInput />
         </mat-form-field>
 
-        <!-- <div 
+        <div 
             fxLayout="row" 
             fxLayoutGap="10%">
             <button
                 fxFlex="45%"
                 mat-raised-button
                 color="accent"
+                type="submit"
             >
                 ADD SHIFT
             </button>
@@ -77,6 +80,6 @@
             >
                 CANCEL
             </button>
-        </div> -->
+        </div>
     </form>
 </div>

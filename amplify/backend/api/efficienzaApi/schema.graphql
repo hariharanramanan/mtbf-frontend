@@ -1,0 +1,10 @@
+type ShiftMaster @model {
+  id: ID!
+  shiftName: String!
+  shiftStartTime: String!
+  shiftEndTime: String!
+  breakName: String!
+  breakStartTime: String!
+  breakEndTime: String!
+  status: String!
+}
