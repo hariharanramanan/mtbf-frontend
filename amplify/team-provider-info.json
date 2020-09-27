@@ -10,6 +10,11 @@
       "StackName": "amplify-efficienza-dev-113900",
       "StackId": "arn:aws:cloudformation:ap-south-1:983109106172:stack/amplify-efficienza-dev-113900/48deb640-f8ac-11ea-9fd9-02153b7bf71a",
       "AmplifyAppId": "d1jj4d71vapgax"
+    },
+    "categories": {
+      "auth": {
+        "efficienza2d2f727a": {}
+      }
     }
   }
 }
