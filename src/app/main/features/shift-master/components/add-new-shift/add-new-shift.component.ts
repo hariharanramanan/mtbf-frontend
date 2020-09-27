@@ -21,6 +21,7 @@ export class AddNewShiftComponent implements OnInit {
 
   async addNewShift() {
     await API.graphql(graphqlOperation(createShiftMaster,{ input: this.addShiftForm.value }));
+    this._bottomSheetRef.dismiss();
   }
 
   close(event: MouseEvent): void {
@@ -30,12 +31,12 @@ export class AddNewShiftComponent implements OnInit {
 
   ngOnInit(): void {
     this.addShiftForm = this.formBuilder.group({
-      shiftName: ['testShiftName'],
-      shiftStartTime: ['10:00'],
-      shiftEndTime: ['11:00'],
-      breakName: ['testBreakName'],
-      breakStartTime: ['10:00'],
-      breakEndTime: ['10:00'],
+      shiftName: [''],
+      shiftStartTime: [''],
+      shiftEndTime: [''],
+      breakName: [''],
+      breakStartTime: [''],
+      breakEndTime: [''],
       status: ['active']
     });
   }
