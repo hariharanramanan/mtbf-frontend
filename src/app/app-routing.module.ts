@@ -12,11 +12,6 @@ const appRoutes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: "auth",
-        loadChildren: () =>
-            import("./main/features/auth/auth.module").then((m) => m.AuthModule),
-    },
-    {
         path: "dashboard",
         loadChildren: () =>
             import("./main/features/dashboard/dashboard.module").then(
