@@ -25,6 +25,12 @@ import { LayoutModule } from "app/layout/layout.module";
 import { GraphQLModule } from "./graphql.module";
 import { ErrorInterceptor } from './error/error-interceptor';
 import { SharedModule } from './main/shared/shared.module';
+
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
 @NgModule({
     declarations: [AppComponent],
     imports: [
