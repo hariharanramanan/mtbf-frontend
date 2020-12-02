@@ -8,8 +8,15 @@ import { NotFoundComponent } from './main/shared/components/not-found/not-found.
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'auth',
         pathMatch: 'full'
+    },
+    {
+        path: "auth",
+        loadChildren: () =>
+            import("./main/features/auth/auth.module").then(
+                (m) => m.AuthModule
+            )
     },
     {
         path: "dashboard",
