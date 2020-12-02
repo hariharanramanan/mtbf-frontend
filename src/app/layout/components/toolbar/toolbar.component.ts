@@ -11,7 +11,6 @@ import { FuseSidebarService } from "@fuse/components/sidebar/sidebar.service";
 import { navigation } from "app/navigation/navigation";
 import { AuthService } from "../../../main/services";
 
-import { Auth } from 'aws-amplify';
 @Component({
     selector: "toolbar",
     templateUrl: "./toolbar.component.html",
@@ -87,11 +86,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this._unsubscribeAll.complete();
     }
 
-    async logout() {
-        try {
-            await Auth.signOut();
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
+    logout() {
     }
 }
