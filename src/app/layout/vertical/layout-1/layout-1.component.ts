@@ -6,7 +6,6 @@ import { FuseConfigService } from "@fuse/services/config.service";
 import { FuseNavigationService } from "@fuse/components/navigation/navigation.service";
 import { FuseNavigation } from "@fuse/types";
 import { FuseNavigationItem } from "@fuse/types";
-import { AuthService } from "../../../main/services";
 
 @Component({
     selector: "vertical-layout-1",
@@ -23,7 +22,6 @@ export class VerticalLayout1Component implements OnInit, OnDestroy {
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
-        private authService: AuthService
     ) {
         // Set the private defaults
         this._unsubscribeAll = new Subject();

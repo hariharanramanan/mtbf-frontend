@@ -5,11 +5,13 @@ import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import * as _ from "lodash";
 
+import { AngularFireAuth } from '@angular/fire/auth';
+
+
 import { FuseConfigService } from "@fuse/services/config.service";
 import { FuseSidebarService } from "@fuse/components/sidebar/sidebar.service";
 
 import { navigation } from "app/navigation/navigation";
-import { AuthService } from "../../../main/services";
 
 @Component({
     selector: "toolbar",
@@ -35,7 +37,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService,
         private router: Router,
-        private authService: AuthService
+        private firebaseAuth: AngularFireAuth
     ) {
         this.languages = [
             {
@@ -87,5 +89,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
 
     logout() {
+        this.firebaseAuth.signOut().then(value => {
+            this.router.navigate(['auth']);
+        });
     }
 }

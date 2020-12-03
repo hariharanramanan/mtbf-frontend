@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import { FuseConfigService } from "../../../../../../@fuse/services/config.service";
 import { fuseAnimations } from "../../../../../../@fuse/animations";
-import { AuthService } from "../../../../services";
 
 @Component({
     selector: "login",
@@ -20,11 +20,8 @@ export class LoginComponent implements OnInit {
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
         private router: Router,
-        private authService: AuthService
+        private angularAuth: AngularFireAuth
     ) {
-        if(this.authService.isLoggedIn()) {
-            this.router.navigate(['/dashboard']);
-        }
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
@@ -52,6 +49,10 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.router.navigate(['/dashboard']);
+        const { email, password } = this.loginForm.value;
+        this.angularAuth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                this.router.navigate(['dashboard']);
+            });
     }
 }

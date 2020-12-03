@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 
-import { AuthGuard } from './main/services';
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 import { NotFoundComponent } from './main/shared/components/not-found/not-found.component';
+
+
+const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['auth']);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'auth',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
     },
     {
@@ -16,21 +20,33 @@ const appRoutes: Routes = [
         loadChildren: () =>
             import("./main/features/auth/auth.module").then(
                 (m) => m.AuthModule
-            )
+            ),
+            canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectLoggedInToDashboard,
+            }
     },
     {
         path: "dashboard",
         loadChildren: () =>
             import("./main/features/dashboard/dashboard.module").then(
                 (m) => m.DashboardModule
-            )
+            ),
+            canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "settings",
         loadChildren: () =>
             import("./main/settings/settings.module").then(
                 (m) => m.SettingsModule
-            )
+            ),
+            canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "effisense",
@@ -38,6 +54,10 @@ const appRoutes: Routes = [
         import("./main/features/effi-sense-data/effi-sense-data.module").then(
             (m) => m.EffiSenseDataModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "shift-master",
@@ -45,6 +65,10 @@ const appRoutes: Routes = [
         import("./main/features/shift-master/shift-master.module").then(
             (m) => m.ShiftMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "department-master",
@@ -52,6 +76,10 @@ const appRoutes: Routes = [
         import("./main/features/department-master/department-master.module").then(
             (m) => m.DepartmentMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "operations-master",
@@ -59,6 +87,10 @@ const appRoutes: Routes = [
         import("./main/features/operations-master/operations-master.module").then(
             (m) => m.OperationsMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "equipment-type-master",
@@ -66,6 +98,10 @@ const appRoutes: Routes = [
         import("./main/features/equipment-type-master/equipment-type-master.module").then(
             (m) => m.EquipmentTypeMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "uom-master",
@@ -73,6 +109,10 @@ const appRoutes: Routes = [
         import("./main/features/uom-master/uom-master.module").then(
             (m) => m.UomMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "factory-master",
@@ -80,6 +120,10 @@ const appRoutes: Routes = [
         import("./main/features/factory-master/factory-master.module").then(
             (m) => m.FactoryMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "plant-master",
@@ -87,6 +131,10 @@ const appRoutes: Routes = [
         import("./main/features/plant-master/plant-master.module").then(
             (m) => m.PlantMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "shopfloor-master",
@@ -94,6 +142,10 @@ const appRoutes: Routes = [
         import("./main/features/shopfloor-master/shopfloor-master.module").then(
             (m) => m.ShopfloorMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "line-master",
@@ -101,6 +153,10 @@ const appRoutes: Routes = [
         import("./main/features/line-master/line-master.module").then(
             (m) => m.LineMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "equipment-master",
@@ -108,6 +164,10 @@ const appRoutes: Routes = [
         import("./main/features/equipment-master/equipment-master.module").then(
             (m) => m.EquipmentMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "routine-master",
@@ -115,6 +175,10 @@ const appRoutes: Routes = [
         import("./main/features/routine-master/routine-master.module").then(
             (m) => m.RoutineMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "asset-master",
@@ -122,6 +186,10 @@ const appRoutes: Routes = [
         import("./main/features/asset-master/asset-master.module").then(
             (m) => m.AssetMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-dashboard",
@@ -129,6 +197,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/ppm-dashboard/ppm-dashboard.module").then(
             (m) => m.PpmDashboardModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-planned-maintenance-create-work-order",
@@ -136,6 +208,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/planned-maintenance-create-work-order/planned-maintenance-create-work-order.module").then(
             (m) => m.PlannedMaintenanceCreateWorkOrderModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-planned-maintenance-work-in-progress",
@@ -143,6 +219,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/planned-maintenence-work-in-progress/planned-maintenence-work-in-progress.module").then(
             (m) => m.PlannedMaintenenceWorkInProgressModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-planned-maintenance-work-order-list",
@@ -150,6 +230,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/planned-maintenence-work-order-list/planned-maintenence-work-order-list.module").then(
             (m) => m.PlannedMaintenenceWorkOrderListModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-unplanned-maintenance-create-work-order",
@@ -157,6 +241,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/unplanned-maintenance-create-work-order/unplanned-maintenance-create-work-order.module").then(
             (m) => m.UnplannedMaintenanceCreateWorkOrderModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-unplanned-maintenance-work-in-progress",
@@ -164,6 +252,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/unplanned-maintenance-work-in-progress/unplanned-maintenance-work-in-progress.module").then(
             (m) => m.UnplannedMaintenanceWorkInProgressModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-unplanned-maintenance-work-order-list",
@@ -171,6 +263,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/unplanned-maintenance-work-order-list/unplanned-maintenance-work-order-list.module").then(
             (m) => m.UnplannedMaintenanceWorkOrderListModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-routine-master",
@@ -178,6 +274,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/routine-management-routine-master/routine-management-routine-master.module").then(
             (m) => m.RoutineManagementRoutineMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-checklist-master",
@@ -185,6 +285,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/routine-management-checklist-master/routine-management-checklist-master.module").then(
             (m) => m.RoutineManagementChecklistMasterModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-mtbf-reports",
@@ -192,6 +296,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/reports-mtbf/reports-mtbf.module").then(
             (m) => m.ReportsMtbfModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: "ppm-mttr-reports",
@@ -199,6 +307,10 @@ const appRoutes: Routes = [
         import("./main/features/ppm/reports-mttr/reports-mttr.module").then(
             (m) => m.ReportsMttrModule
         ),
+        canActivate: [AngularFireAuthGuard],
+            data: {
+                authGuardPipe: redirectUnauthorizedToAuth,
+            }
     },
     {
         path: '**',
