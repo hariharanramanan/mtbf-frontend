@@ -1,1 +1,32 @@
-<p>plant-master works!</p>
+<div class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Plant Master</h2>
+        <button mat-raised-button (click)="addNewPlant()">Add New Plant</button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <ngx-datatable
+            class="material"
+            [rows]="items | async"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [limit]="10">
+
+            <ngx-datatable-column name="Plant Name" prop="plantName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Primary Contact" prop="primaryContact"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Address" prop="address"></ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+    <!-- / CONTENT -->
+
+</div>
