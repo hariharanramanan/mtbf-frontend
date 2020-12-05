@@ -1,0 +1,31 @@
+<div
+    class="page-layout simple fullwidth p-24"
+    fxLayout="row"
+    fxLayoutAlign.gt-sm="center start"
+>
+    <form
+        fxLayout="column"
+        fxFlex.lt-md="100%"
+        fxFlex.gt-sm="500px"
+        [formGroup]="addPlantForm"
+        (ngSubmit)="addNewShift()"
+    >
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Plant Name</mat-label>
+            <input matInput formControlName="plantName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Primary Contact</mat-label>
+            <input matInput formControlName="primaryContact"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="m-8">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address"/>
+        </mat-form-field>
+
+        
+        <button type="submit" mat-raised-button color="primary">Add New Plant</button>
+    </form>
+</div>

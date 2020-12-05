@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/app';
 
+import { AddNewPlantComponent } from '../add-new-plant/add-new-plant.component';
 
 @Component({
   selector: 'app-plant-master',
@@ -15,7 +17,8 @@ export class PlantMasterComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
 
-  constructor(private afs: AngularFirestore, private auth: AngularFireAuth) {
+  constructor(private afs: AngularFirestore, private auth: AngularFireAuth,
+        private _bottomSheet: MatBottomSheet) {
    
   }
 
@@ -28,7 +31,7 @@ export class PlantMasterComponent implements OnInit {
   }
   
   addNewPlant() {
-
+    this._bottomSheet.open(AddNewPlantComponent);
   }
 
 }
