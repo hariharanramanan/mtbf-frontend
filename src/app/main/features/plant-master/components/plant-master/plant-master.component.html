@@ -17,7 +17,8 @@
             [footerHeight]="56"
             [rowHeight]="'auto'"
             [scrollbarH]="true"
-            [limit]="10">
+            [limit]="5"
+            (activate)="selectedItem($event)">
 
             <ngx-datatable-column name="Plant Name" prop="plantName"></ngx-datatable-column>
 

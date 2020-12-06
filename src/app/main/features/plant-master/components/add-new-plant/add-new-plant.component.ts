@@ -23,7 +23,7 @@ export class AddNewPlantComponent implements OnInit {
     private afs: AngularFirestore, private auth: AngularFireAuth,
   ) { }
 
-  async addNewShift() {
+  async addNewPlant() {
     const { plantName, primaryContact, address } = this.addPlantForm.value;
     const timestamp = firebase.default.firestore.FieldValue.serverTimestamp();
     await this.afs.collection('plant_master').add({

@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { PlantMasterComponent } from './components/plant-master/plant-master.component';
 import { AddNewPlantComponent } from './components/add-new-plant/add-new-plant.component';
+import { EditPlantComponent } from './components/edit-plant/edit-plant.component';
 
 const routes: Route[] = [
   {
@@ -15,7 +16,7 @@ const routes: Route[] = [
 
 
 @NgModule({
-  declarations: [PlantMasterComponent, AddNewPlantComponent],
+  declarations: [PlantMasterComponent, AddNewPlantComponent, EditPlantComponent],
   imports: [
     CommonModule,
     SharedModule,

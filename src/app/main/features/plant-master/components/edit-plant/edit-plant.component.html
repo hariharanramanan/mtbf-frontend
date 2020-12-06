@@ -7,8 +7,8 @@
         fxLayout="column"
         fxFlex.lt-md="100%"
         fxFlex.gt-sm="500px"
-        [formGroup]="addPlantForm"
-        (ngSubmit)="addNewPlant()"
+        [formGroup]="editPlantForm"
+        (ngSubmit)="updatePlant()"
     >
         <mat-form-field appearance="outline" class="m-8">
             <mat-label>Plant Name</mat-label>
@@ -26,6 +26,6 @@
         </mat-form-field>
 
         
-        <button type="submit" mat-raised-button color="primary">Add New Plant</button>
+        <button type="submit" mat-raised-button color="primary">Update</button>
     </form>
 </div>
