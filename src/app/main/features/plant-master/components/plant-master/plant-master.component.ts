@@ -37,7 +37,6 @@ export class PlantMasterComponent implements OnInit {
           })
         })
       );
-      this.items.subscribe(data => console.log(data));
     }
   }
   

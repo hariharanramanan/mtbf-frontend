@@ -1,1 +1,33 @@
-<p>shopfloor works!</p>
+<div class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Shopfloor Master</h2>
+        <button mat-raised-button (click)="addShopfloor()">Add Shopfloor</button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <ngx-datatable
+            class="material"
+            [rows]="items | async"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [limit]="5"
+            (activate)="selectedItem($event)">
+
+            <ngx-datatable-column name="Shopfloor Name" prop="shopfloorName"></ngx-datatable-column>
+            
+            <ngx-datatable-column name="Plant Name" prop="plantName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+    <!-- / CONTENT -->
+
+</div>
