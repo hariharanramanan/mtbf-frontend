@@ -10,6 +10,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+
 import { environment } from '../environments/environment';
 
 import "hammerjs";
@@ -44,6 +46,7 @@ import { SharedModule } from './main/shared/shared.module';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
+        AngularFireFunctionsModule,
         // Material moment date module
         MatMomentDateModule,
 

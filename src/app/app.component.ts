@@ -53,10 +53,10 @@ export class AppComponent implements OnInit, OnDestroy {
         // this.navigation = navigation;
 
         // Register the navigation to the service
-        this._fuseNavigationService.register("main", this.navigation);
+        this._fuseNavigationService.unregister("main");
 
         // Set the main navigation as our current navigation
-        this._fuseNavigationService.setCurrentNavigation("main");
+        // this._fuseNavigationService.setCurrentNavigation("main");
 
         // Add languages
         this._translateService.addLangs(["en", "tr"]);

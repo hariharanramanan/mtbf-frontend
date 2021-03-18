@@ -10,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { FuseSidebarService } from "@fuse/components/sidebar/sidebar.service";
+import { FuseNavigationService } from "@fuse/components/navigation/navigation.service";
 
 import { navigation } from "app/navigation/navigation";
 
@@ -27,13 +28,14 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
-    user: any;
+    userEmail: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
 
     constructor(
         private _fuseConfigService: FuseConfigService,
+        private fuseNavigationService: FuseNavigationService,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService,
         private router: Router,
@@ -59,6 +61,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        // track auth status
+        this.firebaseAuth.onAuthStateChanged(auth => {
+            this.userEmail = auth && auth.email ? auth.email : 'Email not present!';
+        });
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
